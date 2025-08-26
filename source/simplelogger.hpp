@@ -6,17 +6,15 @@
 #pragma once
 
 #include <iostream>
-#include <mutex>
-#include <chrono>
-#include <iomanip>
-#include <string>
 
 namespace simplelogger {
 
 // #TODO
 // Main Logic
 
-
+void Test () {
+    std::cout << "test\n";
+}
 
 
 
@@ -25,5 +23,8 @@ namespace simplelogger {
 // #define LOG_INFO(msg)    simplelogger::log(simplelogger::LogLevel::INFO, msg, __FILE__, __LINE__)
 // #define LOG_WARNING(msg) simplelogger::log(simplelogger::LogLevel::WARNING, msg, __FILE__, __LINE__)
 // #define LOG_ERROR(msg)   simplelogger::log(simplelogger::LogLevel::ERROR, msg, __FILE__, __LINE__)
+
+
+#define sl simplelogger
 
 } // namespace simplelogger
