@@ -8,11 +8,15 @@
 #include <iostream>
 #include <mutex>
 #include <windows.h>
+#include <chrono>
+#include <ctime>
+#include <string>
 
 
 // #TODO
-// Add time to logs. 
-// e.g => "(12:15PM) [DEBUG] msg"
+// * Add File Logging
+//  ** Read / Write / etc.
+// =====
 
 namespace simplelogger {
 
@@ -22,6 +26,7 @@ inline std::mutex& GetMutex() {
     return mtx;
 }
 
+
 // Types of Logs
 enum class LogType {
     SIMPLE_LOG_DEBUG,
@@ -29,6 +34,7 @@ enum class LogType {
     SIMPLE_LOG_WARNING,
     SIMPLE_LOG_ERROR
 };
+
 
 // Colored Console (Windows)
 inline WORD GetConsoleColor(LogType type) {
@@ -40,6 +46,25 @@ inline WORD GetConsoleColor(LogType type) {
         default: return FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;
     }
 }
+
+
+inline std::string GetCurrentUserTime(){
+    auto now = std::chrono::system_clock::now();
+    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+
+    std::tm local_tm{};
+
+#ifdef _WIN32
+    localtime_s(&local_tm, &now_c); // Safe for the Windows
+#else
+    localtime_r(&now_c, &local_tm); // Safe for the Linux
+#endif
+
+    char buffer[16];
+    std::strftime(buffer, sizeof(buffer), "%H:%M:%S", &local_tm);
+    return std::string(buffer);
+}
+
 
 // Print with Colored Text
 inline void LogConsoleMessage(LogType type, const char* msg) {
@@ -63,7 +88,7 @@ inline void LogConsoleMessage(LogType type, const char* msg) {
         case LogType::SIMPLE_LOG_ERROR:   prefix = "[ERROR]"; break;
     }
 
-    std::cout << prefix << " " << msg << "\n";
+    std::cout << "(" << GetCurrentUserTime() << ") " << prefix << " " << msg << "\n";
 
     // Set back the origin color
     SetConsoleTextAttribute(hConsole, savedColor);
