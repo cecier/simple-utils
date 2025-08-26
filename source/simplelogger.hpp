@@ -1,7 +1,8 @@
-/* ************
-* Purpose: Simple Logger
-* Author:  Mark 'EUL' Fours
-************ */
+/* ********** */
+/* Purpose: Simple Logger Header-Lib
+/* Author:  Mark 'EUL' Fours
+/************ */
+
 
 #pragma once
 

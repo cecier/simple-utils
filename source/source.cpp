@@ -1,7 +1,9 @@
-/* ************
-* Purpose: Test file for the headers
-* Author:  Mark 'EUL' Fours
-************ */
+/* ********** */
+/* Purpose: Test file for the headers
+/* Author:  Mark 'EUL' Fours
+/************ */
+
+
 
 
 #include <iostream>
