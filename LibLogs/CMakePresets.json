@@ -1,0 +1,74 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 19,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "Debug_x64",
+            "description": "Debug build (x64)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/Debug_x64",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_MAKE_PROGRAM": "C:/msys64/mingw64/bin/ninja.exe",
+                "CMAKE_C_COMPILER": "C:/msys64/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/mingw64/bin/g++.exe"
+            }
+        },
+        {
+            "name": "Release_x64",
+            "description": "Release build (x64)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/Release_x64",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_MAKE_PROGRAM": "C:/msys64/mingw64/bin/ninja.exe",
+                "CMAKE_C_COMPILER": "C:/msys64/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/mingw64/bin/g++.exe"
+            }
+        },
+        {
+            "name": "Debug_x32",
+            "description": "Debug build (x32)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/Debug_x32",
+            "architecture": {
+                "value": "Win32",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_MAKE_PROGRAM": "C:/msys64/mingw32/bin/ninja.exe",
+                "CMAKE_C_COMPILER": "C:/msys64/mingw32/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/mingw32/bin/g++.exe"
+            }
+        },
+        {
+            "name": "Release_x32",
+            "description": "Release build (x32)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/Release_x32",
+            "architecture": {
+                "value": "Win32",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_MAKE_PROGRAM": "C:/msys64/mingw32/bin/ninja.exe",
+                "CMAKE_C_COMPILER": "C:/msys64/mingw32/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/mingw32/bin/g++.exe"
+            }
+        }
+    ]
+}
