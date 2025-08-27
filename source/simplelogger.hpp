@@ -7,12 +7,12 @@
 #pragma once
 
 #include <iostream>
+#include <sstream>
 #include <mutex>
 #include <windows.h>
 #include <chrono>
 #include <ctime>
 #include <string>
-#include <fstream>
 
 
 // #TODO
@@ -69,7 +69,7 @@ inline std::string GetCurrentUserTime(){
 
 
 // Print with Colored Text
-inline void LogConsoleMessage(LogType type, const char* msg) {
+inline void LogConsoleMessage(LogType type, const std::string& msg) {
     std::lock_guard<std::mutex> lock(GetMutex());
 
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -97,19 +97,40 @@ inline void LogConsoleMessage(LogType type, const char* msg) {
 }
 
 
+// Thread Logger
+class Logger {
+public:
+    Logger(LogType type) : type_(type) {}
+
+    template<typename T>
+    Logger& operator<<(const T& value) {
+        buffer_ << value;
+        return *this;
+    }
+
+    ~Logger() {
+        LogConsoleMessage(type_, buffer_.str());
+    }
+
+private:
+    LogType type_;
+    std::ostringstream buffer_;
+};
 
 
 #define simplog simplelogger
 
+// Old-style functions (optional)
 inline void GetLogDebug(const char* msg)   { LogConsoleMessage(LogType::SIMPLE_LOG_DEBUG, msg); }
 inline void GetLogInfo(const char* msg)    { LogConsoleMessage(LogType::SIMPLE_LOG_INFO, msg); }
 inline void GetLogWarning(const char* msg) { LogConsoleMessage(LogType::SIMPLE_LOG_WARNING, msg); }
 inline void GetLogError(const char* msg)   { LogConsoleMessage(LogType::SIMPLE_LOG_ERROR, msg); }
 
-#define LOG_DEBUG(msg)   simplelogger::GetLogDebug(msg)
-#define LOG_INFO(msg)    simplelogger::GetLogInfo(msg)
-#define LOG_WARNING(msg) simplelogger::GetLogWarning(msg)
-#define LOG_ERROR(msg)   simplelogger::GetLogError(msg)
+// Stream style
+#define LOG_DEBUG simplelogger::Logger(simplelogger::LogType::SIMPLE_LOG_DEBUG)
+#define LOG_INFO  simplelogger::Logger(simplelogger::LogType::SIMPLE_LOG_INFO)
+#define LOG_WARNING simplelogger::Logger(simplelogger::LogType::SIMPLE_LOG_WARNING)
+#define LOG_ERROR simplelogger::Logger(simplelogger::LogType::SIMPLE_LOG_ERROR)
 
 
 } // namespace simplelogger

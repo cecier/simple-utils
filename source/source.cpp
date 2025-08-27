@@ -14,12 +14,19 @@ int main() {
 
     // sl::Test();
 
-    LOG_ERROR("test");
-    LOG_WARNING("test");
-    LOG_INFO("test");
-    LOG_ERROR("test");
-    LOG_DEBUG("test");
-    LOG_WARNING("test");
+    // LOG_ERROR("test");
+    // LOG_WARNING("test");
+    // LOG_INFO("test");
+    // LOG_ERROR("test");
+    // LOG_DEBUG("test");
+    // LOG_WARNING("test");
+
+    LOG_ERROR << "test\ntest\n\n\n";
+    LOG_WARNING<< "test";
+    LOG_INFO << "test";
+    LOG_ERROR << "test";
+    LOG_DEBUG << "test";
+    LOG_WARNING << "test";
 
     // printf("%c[%dmHELLO!\n", 0x1B, 32);
 
