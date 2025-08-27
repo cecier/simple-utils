@@ -1,7 +1,7 @@
 /* ********** */
 /* Purpose: Simple Logger Header-Lib
 /* Author:  Mark 'EUL' Fours
-/************ */
+/* ********** */
 
 
 #pragma once
@@ -12,6 +12,7 @@
 #include <chrono>
 #include <ctime>
 #include <string>
+#include <fstream>
 
 
 // #TODO
