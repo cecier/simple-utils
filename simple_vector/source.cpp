@@ -1,13 +1,17 @@
+/* ********** */
+/* Purpose: Test file for the headers
+/* Author:  Mark 'EUL' Fours
+/************ */
+
+
 #include <iostream>
-#include <vector>
+#include "simplevector.hpp"
 
 
 int main(void) {
 
-// @todo
-// 123
 
-
+    // test
 
     // ==== Prevent the console from closing ====
     std::cin.clear();
