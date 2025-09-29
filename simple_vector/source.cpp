@@ -11,6 +11,11 @@
 int main(void) {
 
 
+    ss::Vector <int> name;
+    name.Set(0, 12);
+
+    std::cout << name.Get(0) << std::endl;
+
     // test
 
     // ==== Prevent the console from closing ====
