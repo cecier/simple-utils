@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include "simplevector.hpp"
+#include <vector>
 
 
 int main(void) {
@@ -13,8 +14,13 @@ int main(void) {
 
     ss::Vector <int> name;
     name.Set(0, 12);
+    name.Set(100, 8);
 
-    std::cout << name.Get(0) << std::endl;
+    // std::cout << name.Get(0) << name.Get(100) << std::endl;
+    std::cout << name[100] << std::endl;
+
+
+
 
     // test
 
