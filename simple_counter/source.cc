@@ -10,9 +10,9 @@
 
 int main() {
 
-  sscount::mfile.init_file();
+  ssb.init_file();
 
-  std::cout << "\nyep";
+  std::cout << "\nchecktest";
 
 
   // ==== Prevent the console from closing ====

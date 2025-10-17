@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iostream>
 
+#define ssb sscount::file_checker
+
 
 namespace sscount {
 
@@ -15,10 +17,8 @@ const std::string file_name = "countfile.eul";
 class FileChecker {
 public:
   void init_file() const;   
-  
-private:
   bool is_file_exists() const;
-}mfile;
+}file_checker;
 
 
 
@@ -39,7 +39,7 @@ inline void FileChecker::init_file() const {
     out_file.open(file_name);
   } else {
     std::cout << "Openning the File...\n";    
-  }  
+  }
 }
   
 } // namespace sscount
