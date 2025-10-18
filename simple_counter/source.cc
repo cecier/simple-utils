@@ -1,5 +1,5 @@
 /* ************
- * Purpose: ...
+ * Purpose: Test File for the Simple Counter Header Lib
  * Author:  Mark 'EUL' Fours
  ************ */
 
@@ -9,10 +9,13 @@
 
 
 int main() {
+  std::cout << "File Name -> : ";  
+  std::string file_name{};
+  std::cin >> file_name;  
+  ssb(file_name);
+  // ssb.init_file();
 
-  ssb.init_file();
-
-  std::cout << "\nchecktest";
+  // std::cout << "\nchecktest";
 
 
   // ==== Prevent the console from closing ====
