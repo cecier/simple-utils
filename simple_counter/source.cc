@@ -12,7 +12,7 @@ int main() {
   std::cout << "File Name -> : ";  
   std::string file_name{};
   std::cin >> file_name;  
-  ssb(file_name);
+  ssfile(file_name);
   // ssb.init_file();
 
   // std::cout << "\nchecktest";

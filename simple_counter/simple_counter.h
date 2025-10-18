@@ -1,52 +1,60 @@
-/* ************
- * Purpose: Simple One-Header Symbols (etc..) Counter
- * Author:  Mark 'EUL' Fours
- ************ */
-
+#pragma once
 #include <fstream>
 #include <iostream>
+#include <vector>
+#include <string>
 
-#define ssb sscount::FileChecker file_checker
-
+#define ssfile sscount::FileChecker file_checker_
 
 namespace sscount {
 
-// @TODO
-// Get File
-// Read a number of symbols etc.
-// =====
-
-
 class FileChecker {
 public:
-  // void set_file
-  FileChecker(std::string file_name) : file(file_name + ".eul") {
-    init_file();    
+  FileChecker(const std::string& file_name) : file(file_name + ".eul") {
+      init_file();
   }
+
 private:
-  void init_file() const;
-  bool is_file_exists(std::string file) const;
-  std::string file;    
+  void init_file();
+  bool is_file_exists() const;
+
+  void calc_file();
+  void print_results() const;
+
+  std::string file;
+  std::vector<std::string> words;
 };
 
 
-  inline bool FileChecker::is_file_exists(std::string file) const {
+inline bool FileChecker::is_file_exists() const {
   std::ifstream file_check(file);
-  if (!file_check) {
-    return false;
-  }
-  return true;
+  return file_check.good();
 }
 
-inline void FileChecker::init_file() const {
-  std::ofstream out_file;
-
-  if (!is_file_exists(file)) {
+inline void FileChecker::init_file() {
+  if (!is_file_exists()) {
     std::cerr << "No File Found... \nCreating \"" << file << "\"...\n";
-    out_file.open(file);
+    std::ofstream out_file(file); // RAII: file auto-closed
   } else {
-    std::cout << "Openning the File...\n";    
+    std::cout << "Opening the File...\n";
+    calc_file();
   }
 }
-  
+
+inline void FileChecker::calc_file() {
+  std::ifstream ifs(file);
+  std::string temp;
+  while (ifs >> temp) {
+    words.push_back(temp);
+  }
+  print_results();
+}
+
+inline void FileChecker::print_results() const {
+  std::cout << "\n\nTotal amount of words: " << words.size() << "\n";
+  // @TODO : Total amount of symbols
+  // @TODO : Total amount of numbers
+  // @TODO : Total amount of spaces  
+}
+
 } // namespace sscount
