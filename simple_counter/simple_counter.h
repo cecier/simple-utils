@@ -6,26 +6,31 @@
 #include <fstream>
 #include <iostream>
 
+#define ssb sscount::FileChecker file_checker
+
 
 namespace sscount {
 
-const std::string file_name = "countfile.eul";
+// const std::string file_name = "countfile.eul";
+
 
 
 class FileChecker {
 public:
-  void init_file() const;   
-  
+  // void set_file
+  FileChecker(std::string file_name) : file(file_name + ".eul") {
+    init_file();    
+  }
 private:
-  bool is_file_exists() const;
-}mfile;
+  void init_file() const;
+  bool is_file_exists(std::string file) const;
+  std::string file;    
+};
 
 
-
-
-inline bool FileChecker::is_file_exists() const {
-  std::ifstream file(file_name);
-  if (!file) {
+  inline bool FileChecker::is_file_exists(std::string file) const {
+  std::ifstream file_check(file);
+  if (!file_check) {
     return false;
   }
   return true;
@@ -34,12 +39,12 @@ inline bool FileChecker::is_file_exists() const {
 inline void FileChecker::init_file() const {
   std::ofstream out_file;
 
-  if (!is_file_exists()) {
-    std::cerr << "No File Found... Creating \"countifle.eul\"...\n";
-    out_file.open(file_name);
+  if (!is_file_exists(file)) {
+    std::cerr << "No File Found... \nCreating \"" << file << "\"...\n";
+    out_file.open(file);
   } else {
     std::cout << "Openning the File...\n";    
-  }  
+  }
 }
   
 } // namespace sscount
