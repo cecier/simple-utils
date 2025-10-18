@@ -11,8 +11,10 @@
 
 namespace sscount {
 
-// const std::string file_name = "countfile.eul";
-
+// @TODO
+// Get File
+// Read a number of symbols etc.
+// =====
 
 
 class FileChecker {
