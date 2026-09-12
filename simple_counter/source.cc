@@ -1,27 +1,26 @@
-/* ************
- * Purpose: Test File for the Simple Counter Header Lib
- * Author:  Mark 'EUL' Fours
- ************ */
+// Test File for the Simple Counter Header
 
 
 #include <iostream>
+#include <string>
 #include "simple_counter.h"
 
 
-int main() {
-  std::cout << "File Name -> : ";  
+int main(int argc, char** argv) {
+
+
+  // std::cout << args<< "\n\n" << *args_file;
+
+  if (argc > 1) {
+      std::cout << "Curernt File Name is: "; 
+      ssfile(argv[1]);
+      return 0;
+  }
+
+  std::cout << "Enter File Name -> : ";  
   std::string file_name{};
   std::cin >> file_name;  
   ssfile(file_name);
-  // ssb.init_file();
 
-  // std::cout << "\nchecktest";
-
-
-  // ==== Prevent the console from closing ====
-  std::cin.clear();
-  std::cin.ignore(32767, '\n');
-  std::cin.get();
-  // ==========================================
-      
+  return 0;
 }
