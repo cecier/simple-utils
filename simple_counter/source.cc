@@ -8,13 +8,10 @@
 
 int main(int argc, char** argv) {
 
-
-  // std::cout << args<< "\n\n" << *args_file;
-
   if (argc > 1) {
-      std::cout << "Curernt File Name is: "; 
-      ssfile(argv[1]);
-      return 0;
+    std::cout << "Curernt File Name is: "; 
+    ssfile(argv[1]);
+    return 0;
   }
 
   std::cout << "Enter File Name -> : ";  
